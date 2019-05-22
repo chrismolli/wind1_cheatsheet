@@ -1,0 +1,225 @@
+\documentclass[10pt,landscape]{article}
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+\usepackage{multicol,multirow}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue]{hyperref}
+
+
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+\pagestyle{empty}
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+% -----------------------------------------------------------------------
+
+\title{Windenergienutzung I Cheat Sheet}
+
+\begin{document}
+
+\raggedright
+\footnotesize
+
+\begin{center}
+     \Large{\textbf{Windenergienutzung I - Cheat Sheet}} \\
+\end{center}
+\begin{multicols}{3}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\section{Statistik}
+\subsection{Basics}
+Mittelwert $\bar{x}=\sum^n_{i=1}x_i$\\
+Varianz $\sigma^2 = \sum^n_{i=1}(x_i-\bar{x})^2$\\
+Kovarianz \\
+${\displaystyle r_{xy}:={\frac {\sum _{i=1}^{n}(x_{i}-{\overline {x}})(y_{i}-{\overline {y}})}{\sqrt {\sum _{i=1}^{n}(x_{i}-{\overline {x}})^{2}\cdot \sum _{i=1}^{n}(y_{i}-{\overline {y}})^{2}}}}} ,\quad r_{xy}\in[-1,1]$\\
+Lineare Korrelation zweier Messreihen wenn $|r_{xy}|\approx 1$
+\subsection{Lineare Regression}
+Geradengleichung $y=b_1\cdot x +b_0$\\
+Koeffizienten ${\displaystyle {\begin{aligned}b_{1}&={\frac {\sum \nolimits _{i=1}^{n}(x_{i}-{\overline {x}})(y_{i}-{\overline {y}})}{\sum \nolimits _{i=1}^{n}(x_{i}-{\overline {x}})^{2}}}\\b_{0}&={\overline {y}}-b_{1}{\overline {x}}\end{aligned}}}$\\
+
+
+\section{Berechnung von Wind}
+\begin{tabular}{lll}
+	Rauhigkeitsh\"ohe & $z_0$ & m \\
+	Messh\"ohe & $z_1$ & m \\
+	Nabenh\"ohe & $z_2$ & m \\
+	Universelle Gaskonstante & $R$ & $\text{m}^2/\text{s}^2$K \\
+	Radius & $r$  & m\\
+	Dichte & $\rho$  & kg/$\text{m}^3$\\
+	Rauhigkeitsexponent & $\alpha$ & - \\
+	Widerstandsbeiwert & $c_W$  & - \\
+	Auftriebsbeiwert & $c_A$  & - \\
+	Windrichtung & $\gamma$  & $\circ$\\
+	Jahresmittel der Windgeschwindigkeit & $v_m$  & m/s\\
+	Mittlere Windgeschwindigkeit (10 min) & $\bar{v}$ & m/s\\
+\end{tabular}
+Logarithmische Geschwindigkeitsverteilung $v_2 = v_1 \cdot \frac{\text{ln}(z_2/z_0)}{\text{ln}(z_1/z_0)}$\\
+Rauhigkeitsexponent $z_0 \approx 15.25\text{m} \cdot \text{exp}(-\frac{1}{\alpha})$\\
+Powerlaw Geschwindigkeitsverteilung $v_2 = v_1 \cdot (\frac{z_2}{z_1})^\alpha$\\
+Ideale Gasgleichung $\rho = \frac{p}{R\cdot T}$\\
+Windleistung $P_{\text{Wind}} = \frac{\rho}{2} v_1^3 \pi r^2$\\
+Leistungsbeiwert $c_P = \frac{P_{\text{Rotor}}}{P_{\text{Wind}}}$\\
+Maximaler Leistungsbeiwert $c_{P,max}=\frac{16}{27}\cdot \text{cos}^3\gamma$
+Turbulenzintensit\"at $I_T = \frac{\sigma_v}{\bar{v}}$\\
+
+\subsection{Weibullverteilung}
+\begin{tabular}{lll}
+	Skalierungsparameter & $A$ & m/s \\
+	Formfaktor & $k$ & - \\
+\end{tabular}
+Verteilungsdichtefunktion $f(v)=\frac{k}{A}(\frac{v}{A})^{k-1}\cdot \text{exp}(-(\frac{v}{A})^k)$\\
+Kumulative Verteilung $F(v)=1-\text{exp}(-(\frac{v}{A})^k)$ \\
+Jahresmittel Windgeschwindigkeit $v_m \approx A \cdot (0.568+\frac{0.434}{k})^\frac{1}{k}$ \\
+
+%Gammafunktion $\Gamma(x) = \int_0^{\infty}\text{exp}(-t)t^{x-1} dt$
+% 1. + 2. Moment Wind II Folie 14
+
+Annahme bei Umrechnung $k_2 = k_1$ \\
+Logarithmisches Windprofil $A_2 = A_1 \cdot \frac{\text{ln}(z_2/z_0)}{\text{ln}(z_1/z_0)}$\\
+
+\subsection{Gumbelverteilung}
+F\"ur sehr hohe Windgeschwindigkeiten.\\
+Euler Konstante $\gamma=0.5772$ \\
+Kumulative Verteilung $F_{\text{Gumbel}}(v) = \text{exp}\left[-\text{exp}(-\gamma+\frac{\pi}{\sqrt{6}}\frac{v-m_{\text{extreme}}}{\sigma_{\text{extreme}}})\right]$\\
+Gumbelparameter aus Weibull ${\displaystyle {\begin{aligned}m_{\text{extreme}}=\frac{\gamma-k\cdot\text{ln}(A)}{k}\\\sigma_{\text{extreme}}=\frac{\pi}{k\cdot\sqrt{6}}\end{aligned}}}$\\
+
+\subsection{Brutto Jahresenergieertrag}
+\begin{tabular}{lll}
+	Zeitraum & $T$ & s \\
+	Leistung & $P$ & W \\
+\end{tabular}\\
+Jahresenergieertrag $AEP = 8760\text{h} \cdot \sum^n_{i=1}\left[(F(v_i)-F(v_{i-1}))(\frac{P_{i-1}+P_i}{2})\right]$\\
+Energieertrag (Weibull) $E_i=f(v_i) \cdot P_i \cdot T , \quad E_{\text{ges}}=\sum E_i$
+
+\subsection{Netto Jahresenergieertrag}
+Netto AEP $\approx$ Brutto AEP - 10$\%$ durch Verschmutzung, Wartung, Netzverluste und Windparkeffekte.
+
+\subsection{Auslastung}
+Der Anzahl der j\"ahrlichen Vollaststunden $Q_1$ und der Auslastungsfaktor $Q_2$ sind ein Ma$\ss$ f\"ur die G\"ute des Standortes und die Anpassung der Anlage.\\
+Volllaststunden $Q_1 = \frac{\text{Tats\"achlicher Jahresertrag [kWh]}}{\text{Nennleistung [kW]}}$\\
+Auslastungsfaktor $Q_2 = \frac{Q_1}{8760\text{h}}$\\
+Der Auslegungsfaktor sollte idealerweise zwischen 20-70\% liegen, normalerweise liegt er um die 25-30\%.
+
+
+\section{Aerodynamik}
+\subsection{Energie und Leistung}
+\begin{tabular}{lll}
+	Fl\"ache & $F$ & $\text{m}^2$ \\
+	Geschwindigkeit vor Rotor & $v_1$ & m/s \\
+	Geschwindigkeit am Rotor & $v_2$ & m/s \\
+	Geschwindigkeit nach Rotor & $v_3$ & m/s \\
+\end{tabular}\\
+Kinetische Energie $E=\frac{1}{2}\cdot m \cdot v_1^2$\\
+Massendurchsatz $\dot{m}=\rho\cdot F \cdot v$\\
+Windleistung $P_{\text{Wind}}=\dot{E}=\frac{1}{2}\cdot\rho\cdot F \cdot v_1^3$\\
+Kontinuit\"atsbedingung $\dot{m} = const$\\
+Rotorschub $S=\dot{m}\cdot(v_1-v_3)$\\
+Windgeschwindigkeit am Rotor $v_2 = (v_1+v_3)/2$
+
+\subsection{Maximaler Wirkungsgrad nach Betz}
+Leistungsbeiwert $c_P = \frac{1}{2}\cdot(1+\frac{v_3}{v_1})\cdot(1-(\frac{v_3}{v_1})^2)$\\
+Rotorleistung $P_{\text{Rotor}} = P_{Wind} \cdot c_P$\\
+Optimale Abbremsung wenn $v_3 = v_1/3$, damit folgt $v_2 = 2/3\cdot v_1$
+am Rotor. Daraus ergibt sich der maximale Leistungsbeiwert zu $c_{P,\text{Betz}}=\frac{16}{27}=0.593$\\
+
+\subsection{Actuator Disk Theorie}
+Abrupter statischer Druckabfall am Rotor durch Rotorschub.
+\begin{tabular}{lll}
+	Axialer Induktionsfaktor  & $a$ & - \\
+\end{tabular}\\
+Induzierte Geschwindigkeit $v_i=v_1-v_2=a \cdot v_1$\\
+Schubbeiwert $c_S = \frac{\text{Schub}}{\text{Staudruck} \cdot \text{Fl\"ache}} = \frac{S}{\frac{\rho}{2}\cdot v_1^2\cdot F} = 4a\cdot(1-a)$
+Betz-Optimum bei $a = 1/3 ,\quad c_S = 8/9$\\
+Rotorleistung $P_{\text{Rotor}} = \frac{\rho}{2} \cdot F \cdot v_1^3 \cdot (4a\cdot (1-a)^2)$\\
+Leistungsbeiwert $c_P = 4a \cdot (1-a)^2$\\
+
+\subsection{Dimensionslose Kenngr\"o$\ss$en}
+\begin{tabular}{lll}
+	Winkelgeschwindigkeit  & $\Omega$ & rad/s \\
+	Rotordrehmoment & M & Nm \\ 
+	Kinematische Viskosit\"at & $\nu$ & $m^2/s$\\
+	Profiltiefe & t & Nm \\ 
+\end{tabular}\\
+Schnelllaufzahl $\lambda=\frac{r\cdot\Omega}{v_1},\quad \lambda\approx1 \text{ Kraft}, \quad \lambda>5 \text{ Leistung}$
+Momentenbeiwert $c_M = \frac{M}{\frac{\rho}{2}v_1^2\pi r^3} = \frac{c_P}{\lambda}$\\
+Reynoldszahl $Re = \frac{\text{Tr\"agheitskraft}}{\text{Z\"ahigkeitskraft}} = \frac{v \cdot t}{\nu}$
+
+\subsection{Auftrieb und Widerstand}
+\begin{tabular}{lll}
+	Gravitationskonstante  & $g$ & m/$s^2$ \\
+	H\"ohe  & $z$ & m \\
+	Fl\"ugelfl\"ache & S & $m^2$ \\
+\end{tabular}\\
+Bernoulli Gleichung $p + \rho gz + \frac{\rho}{2}v^2 = const.$\\
+Auftrieb $A = \frac{\rho}{2} c_A v^2 S $\\
+Widerstand $W = \frac{\rho}{2} c_W v^2 S $\\
+Gleitzahl $\epsilon = c_W/c_A$
+
+\subsection{Rotorauslegung nach Betz}
+Vorgabe der Entwurfsschnelllaufzahl $\lambda_A$, Auftriebsbeiwertes $c_A$, Entwurfsanstellwinkels $\alpha_A$ und der Anzahl der Bl\"atter $z$. Ergebnis ist dann der Profiltiefenverlauf $t(r)$ und die Profilwindung $\alpha(r)$.\\
+\begin{tabular}{lll}
+	Dimensionsloser Radius  & $r/R$ & - \\
+	Rotorradius & $R$ & m \\
+\end{tabular}\\
+Profiltiefenverteilung $t(r) = 2\pi R \frac{1}{z} \cdot \frac{8}{9\cdot c_a} \cdot \frac{1}{\lambda_A \cdot \sqrt{\lambda_A^2 \cdot (\frac{r}{R})^2 + \frac{4}{9}}}$\\
+Profilwindung $\alpha(r) = \text{arctan}(\frac{2}{3\cdot\lambda_A\cdot r/R})-\alpha_A$\\
+
+\subsection{Rotorauslegung nach Schmitz}
+Drallverluste aus Diagram $\propto \frac{1}{\lambda_A^2}$\\
+Profilwiderstandsverluste $\eta_{\text{Profil}} = 1-\frac{3}{2}\frac{r}{R}\frac{\lambda_A}{r/R}$\\
+%$P_{\text{real}}=c_{P,\text{Betz}}\frac{\rho}{2}v_1^3\pi R^2(1-\frac{\lambda_A}{1/\epsilon})$\\
+Tipverluste $\eta_{\text{Tip}}\approx1-\frac{1,84}{z\lambda_A}\quad\text{f\"ur }\lambda_A>2$ \\
+Profiltiefenverteilung $t(r) = \frac{1}{z}\frac{16\pi}{c_a}\cdot r \cdot \text{sin}^2(\frac{\alpha_1}{3})$\\
+mit $\alpha_1=\text{arctan}(\frac{R}{\lambda_A\cdot r})$\\
+Unterschiede der beiden Verfahren vor allem im Blattwurzelbereich ($<1\%$ des Rotorradius). \\
+Bestimmung des $c_{P,\text{real}}$ aus Diagramm, dann\\
+$c_{P,\text{max,real}} = c_{P,\text{real}} \cdot \eta_{\text{Profil}} \cdot \eta_{\text{Tip}} < c_{P,\text{Betz}}$
+
+\section{Strukturdynamik}
+\subsection{Einteilung von Belastungen}
+\begin{tabular}{lll}
+	Station\"ar  & Eigengewicht, Fliehkraft &  \\
+	Transient & Bremskr\"afte &  \\
+	Periodisch & Massenunwucht &  \\
+	Stochastisch & Windturbulenz, B\"oen &  \\
+	Kraft & F & N \\
+	Hebelarm & L & m\\
+	Zeit & t & s\\
+\end{tabular}\\
+Moment an der Gondel $M=F\cdot L\cdot\text{sin}(\Omega\cdot t)$\\
+$\rightarrow$ Periodische Anregung der Gondel durch $\Omega$\\
+Periodisches Gondelmoment bei Ein- und Zweiblattrotoren. Bei Drei- und Vierblattrotoren l\"oscht sich die Periodizit\"at aus, sodass ein konstantes Gondelmoment vorliegt, solange konstante Windverh\"altnisse vorliegen.
+
+\subsection{Rotational Sampling}
+Jede B\"oe wird mehrmals durch die Rotorbl\"atter durchschnitten. Aus Sicht des Blattes wird die Belastung durch die B\"oe so wiederholt abgetastet. Die Anregung der B\"oe wird somit mit der Rotationsfrequenz des Blattes \"uberlagert.
+\end{multicols}
+
+\section{Editorial}
+Created by Christian Molli\`ere.\\
+Last updated \today.\\
+Feel free to share and edit!
+
+\end{document}
