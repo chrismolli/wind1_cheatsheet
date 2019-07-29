@@ -6,7 +6,6 @@
 \usepackage[landscape]{geometry}
 \usepackage[colorlinks=true,citecolor=blue,linkcolor=blue]{hyperref}
 
-
 \ifthenelse{\lengthtest { \paperwidth = 11in}}
     { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
 	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
@@ -215,6 +214,112 @@ Periodisches Gondelmoment bei Ein- und Zweiblattrotoren. Bei Drei- und Vierblatt
 
 \subsection{Rotational Sampling}
 Jede B\"oe wird mehrmals durch die Rotorbl\"atter durchschnitten. Aus Sicht des Blattes wird die Belastung durch die B\"oe so wiederholt abgetastet. Die Anregung der B\"oe wird somit mit der Rotationsfrequenz des Blattes \"uberlagert.
+
+
+
+\section{Konstruktiver Aufbau}
+Auslegungslebensdauer um die 20 Jahre.\\
+Derzeit praktisch nur Dreiblattrotor.\\
+\subsection{Nabenkonzepte}
+\begin{itemize}
+	\item Starr mit/ohne Blattverstellung
+	\item Gelenkig, schlagend oder pendelnd
+	\item Growian-Nabe kombiniert Pendeln und Pitchverstellung
+\end{itemize}
+
+
+
+\section{Elektrische Systeme}
+\subsection{Elektrische Komponenten}
+\begin{itemize}
+	\item Generator
+	\item Rotor PM + Stator
+	\item Encoder
+	\item Frequenzumrichter
+	\item Transformatoren
+\end{itemize}
+
+\subsection{Generatoren}
+Unterscheidung in Synchron- (GS) und Asynchron-Generatoren (ASG).
+\subsubsection{Synchron-Generatoren}
+\begin{itemize}
+	\item Der L\"aufer (Elektro- oder Permanentmagnet) induziert eine mit der Drehzahl umlaufende Spannung in den St\"ander.
+	\item Der L\"aufer eilt mit dem lastabh\"angigen Polradwinkel dem mit der Netzfrequenz umlaufenden St\"anderfeld vor.
+	\item \textbf{Drehzahl ist konstant und gleich der Synchrondrehzahl.}
+\end{itemize}
+
+\subsubsection{Asynchron-Generatoren}
+\begin{itemize}
+	\item Sehr robuster und preisg\"unstiger Generator, durch geringf\"ugige Drehzahlflexibilit\"at gut f\"ur Windenergieanlagen geeignet
+	(sonst geringe Verwendung)
+	\item Der mit dem Netz verbundene St\"ander induziert eine Spannung in den L\"aufer, wenn dieser sich \"ubersynchron, d.h. schneller als das umlaufende
+	St\"anderfeld, dreht. Das Rotormagnetfeld induziert wiederum einen Strom in
+	den Stator.
+	\item Die Stromst\"arke h\"angt von der Differenzdrehzahl, dem Schlupf, ab.
+	\item Nennschlupf ca. 1\%, kann durch gr\"osseren L\"auferwiderstandes erh\"oht
+	werden.
+\end{itemize}
+Schlupf $s = \frac{n_{syn}-n}{n_{syn}} $ 
+
+\subsection{Transformatoren}
+Die Funktion des Trafos ist die Ausgangsspannung des Generators (typisch 690 V) auf Mittelspannung (10-36 KV) zu heben.\\
+\vspace{7pt}
+Zwei Trafo Typen - Trocken und mit \"Ol gefüllt (synthetisches \"Ol, Silikon\"ol, Ester); Unterschiede in Wartungsaufwand, Flammbarkeit, K\"uhleigenschaften, Isolationseigenschaften, Kompaktbauweise und Kosten.\\
+\vspace{7pt}
+\textbf{Giessharztransformatoren} zeichnen sich aus durch feuerbeständigkeit, hohe Isolierung und Kurzschlussfähigkeit, Unempfindlichkeit in tropischen Umgebungen.\\
+\vspace{7pt}
+\textbf{Fl\"ussigkeitsgef\"ullte Transformatoren} zeichnen sich aus durch tiefere Leerlauf und Wicklungsverluste, geringere Abmessung und Gewicht, günstig und recyclebar. Sie sind vor Allem an Standorten ohne Brandschutzauflagen verwendbar.
+
+\subsection{Schaltanlagen}
+Mittelspannung Schaltanlagen k\"onnen in drei Typen aufgeteilt werden: luftisoliert, gasisoliert (SF6, Schwefelhexafluorid) und feststoffisoliert.
+
+\subsection{Schaltungskonzepte}
+\subsubsection{1. Traditionell D\"anisch}
+\begin{itemize}
+	\item Direkte Netzkoppelung eines Asynchrongenerators (Das Netz erzwingt konstante Drehzahl.)
+	\item Kombination mit polumschaltbarem Generator (2 Drehzahlen)
+	\item Stall- oder Aktiv-Stallregelung
+	\item statische Blindleistungskompensation
+\end{itemize}
+
+\subsubsection{2. Asynchrongenerator mit Schlupfregelung}
+\begin{itemize}
+	\item Direkte Koppelung eines Asynchrongenerators an das Netz
+	\item Drehzahlvariabilit\"at von 0\% bis +10\% durch Ver\"anderung
+	des Widerstands im Rotorkreis („Opti-Slip“).
+	\item Pitchregelung
+	\item statische Blindleistungskompensation
+\end{itemize}
+
+\subsubsection{3. Doppelt-gespeister Asynchrongenerator}
+\begin{itemize}
+	\item Direkte Koppelung des Stators des Asynchrongenerators an das Netz -> im Stator Netzfrequenz
+	\item  Umrichter zwischen dem Rotor des Asynchrongenerators und dem Netz
+	\item  Volle Drehzahlvariabilit\"at von ca. -33\% bis +33\% $n_{syn}$ durch ver\"anderliche Frequenz
+	im Rotor durch 4-Quadranten-Umrichter nur f\"ur Leistung aus dem Rotor (bis 1/3 des
+	Gesamtleistung) erm\"oglicht Umkehr der Energieflussrichtung
+	\item  Pitchregelung
+\end{itemize}
+
+\subsubsection{4. Synchrongenerator mit variabler Drehzahl und Vollumrichter}
+\begin{itemize}
+	\item Drehmoment wird \"uber die Erregung geregelt
+	\item  Vollumrichter erm\"oglicht Einspeisung mit konstanter Netzfrequenz
+	\item  Pitchregelung,
+\end{itemize}
+
+
+\section{Regelungstechnik}
+
+\subsection{Hierarchie}
+\begin{enumerate}
+	\item \textbf{Sicherheitssystem} f\"ur Not-Aus Funktion im "Fail Safe" Mode
+	\item \textbf{Regelung} zur Leistungsbegrenzung und Optimierung der Teillast
+	\item \textbf{Betriebsf\"uhrung} f\"ur Start, Stopp, Hilfsantriebe und Windnachf\"uhrung
+	\item \textbf{Fern\"uberwachung (SCADA)} f\"ur Betriebsdatenerfassung und Remote Control
+\end{enumerate}
+
+
 \end{multicols}
 
 \section{Editorial}
