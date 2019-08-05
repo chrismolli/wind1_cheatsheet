@@ -52,13 +52,15 @@
 \subsection{Basics}
 Mittelwert $\bar{x}=\sum^n_{i=1}x_i$\\
 Varianz $\sigma^2 = \sum^n_{i=1}(x_i-\bar{x})^2$\\
+\vspace{6pt}
 Kovarianz \\
 ${\displaystyle r_{xy}:={\frac {\sum _{i=1}^{n}(x_{i}-{\overline {x}})(y_{i}-{\overline {y}})}{\sqrt {\sum _{i=1}^{n}(x_{i}-{\overline {x}})^{2}\cdot \sum _{i=1}^{n}(y_{i}-{\overline {y}})^{2}}}}} ,\quad r_{xy}\in[-1,1]$\\
+\vspace{6pt}
 Lineare Korrelation zweier Messreihen wenn $|r_{xy}|\approx 1$
 \subsection{Lineare Regression}
 Geradengleichung $y=b_1\cdot x +b_0$\\
+\vspace{5pt}
 Koeffizienten ${\displaystyle {\begin{aligned}b_{1}&={\frac {\sum \nolimits _{i=1}^{n}(x_{i}-{\overline {x}})(y_{i}-{\overline {y}})}{\sum \nolimits _{i=1}^{n}(x_{i}-{\overline {x}})^{2}}}\\b_{0}&={\overline {y}}-b_{1}{\overline {x}}\end{aligned}}}$\\
-
 
 \section{Berechnung von Wind}
 \begin{tabular}{lll}
@@ -74,28 +76,37 @@ Koeffizienten ${\displaystyle {\begin{aligned}b_{1}&={\frac {\sum \nolimits _{i=
 	Windrichtung & $\gamma$  & $\circ$\\
 	Jahresmittel der Windgeschwindigkeit & $v_m$  & m/s\\
 	Mittlere Windgeschwindigkeit (10 min) & $\bar{v}$ & m/s\\
-\end{tabular}
+\end{tabular}\\
+\vspace{3pt}
 Logarithmische Geschwindigkeitsverteilung $v_2 = v_1 \cdot \frac{\text{ln}(z_2/z_0)}{\text{ln}(z_1/z_0)}$\\
 Rauhigkeitsexponent $z_0 \approx 15.25\text{m} \cdot \text{exp}(-\frac{1}{\alpha})$\\
+\vspace{3pt}
 Powerlaw Geschwindigkeitsverteilung $v_2 = v_1 \cdot (\frac{z_2}{z_1})^\alpha$\\
 Ideale Gasgleichung $\rho = \frac{p}{R\cdot T}$\\
+\vspace{3pt}
 Windleistung $P_{\text{Wind}} = \frac{\rho}{2} v_1^3 \pi r^2$\\
+\vspace{3pt}
 Leistungsbeiwert $c_P = \frac{P_{\text{Rotor}}}{P_{\text{Wind}}}$\\
-Maximaler Leistungsbeiwert $c_{P,max}=\frac{16}{27}\cdot \text{cos}^3\gamma$
+Maximaler Leistungsbeiwert $c_{P,max}=\frac{16}{27}\cdot \text{cos}^3\gamma$\\
+\vspace{3pt}
 Turbulenzintensit\"at $I_T = \frac{\sigma_v}{\bar{v}}$\\
 
 \subsection{Weibullverteilung}
 \begin{tabular}{lll}
 	Skalierungsparameter & $A$ & m/s \\
 	Formfaktor & $k$ & - \\
-\end{tabular}
+\end{tabular}\\
+\vspace{2pt}
 Verteilungsdichtefunktion $f(v)=\frac{k}{A}(\frac{v}{A})^{k-1}\cdot \text{exp}(-(\frac{v}{A})^k)$\\
+\vspace{2pt}
 Kumulative Verteilung $F(v)=1-\text{exp}(-(\frac{v}{A})^k)$ \\
-Jahresmittel Windgeschwindigkeit $v_m \approx A \cdot (0.568+\frac{0.434}{k})^\frac{1}{k}$ \\
-
-%Gammafunktion $\Gamma(x) = \int_0^{\infty}\text{exp}(-t)t^{x-1} dt$
+Jahresmittel Geschw. $v_m = A \cdot \Gamma(1+\frac{1}{k}) \approx A \cdot (0.568+\frac{0.434}{k})^\frac{1}{k}$  \\
+\vspace{7pt}
+Gammafunktion $\Gamma(x) = \int_0^{\infty}\text{exp}(-t)t^{x-1} dt$\\
+Quadratisches Mittel $\bar{u}^2 =  A^2 \cdot \Gamma(1+\frac{2}{k})$\\
+Kubisches Mittel $\bar{u}^3 =  A^3 \cdot \Gamma(1+\frac{3}{k})$\\
 % 1. + 2. Moment Wind II Folie 14
-
+\vspace{7pt}
 Annahme bei Umrechnung $k_2 = k_1$ \\
 Logarithmisches Windprofil $A_2 = A_1 \cdot \frac{\text{ln}(z_2/z_0)}{\text{ln}(z_1/z_0)}$\\
 
@@ -118,8 +129,10 @@ Netto AEP $\approx$ Brutto AEP - 10$\%$ durch Verschmutzung, Wartung, Netzverlus
 
 \subsection{Auslastung}
 Der Anzahl der j\"ahrlichen Vollaststunden $Q_1$ und der Auslastungsfaktor $Q_2$ sind ein Ma$\ss$ f\"ur die G\"ute des Standortes und die Anpassung der Anlage.\\
+\vspace{2pt}
 Volllaststunden $Q_1 = \frac{\text{Tats\"achlicher Jahresertrag [kWh]}}{\text{Nennleistung [kW]}}$\\
 Auslastungsfaktor $Q_2 = \frac{Q_1}{8760\text{h}}$\\
+\vspace{2pt}
 Der Auslegungsfaktor sollte idealerweise zwischen 20-70\% liegen, normalerweise liegt er um die 25-30\%.
 
 
@@ -293,7 +306,7 @@ Mittelspannung Schaltanlagen k\"onnen in drei Typen aufgeteilt werden: luftisoli
 
 \subsubsection{3. Doppelt-gespeister Asynchrongenerator}
 \begin{itemize}
-	\item Direkte Koppelung des Stators des Asynchrongenerators an das Netz -> im Stator Netzfrequenz
+	\item Direkte Koppelung des Stators des Asynchrongenerators an das Netz $\rightarrow$ im Stator Netzfrequenz
 	\item  Umrichter zwischen dem Rotor des Asynchrongenerators und dem Netz
 	\item  Volle Drehzahlvariabilit\"at von ca. -33\% bis +33\% $n_{syn}$ durch ver\"anderliche Frequenz
 	im Rotor durch 4-Quadranten-Umrichter nur f\"ur Leistung aus dem Rotor (bis 1/3 des
@@ -319,12 +332,13 @@ Mittelspannung Schaltanlagen k\"onnen in drei Typen aufgeteilt werden: luftisoli
 	\item \textbf{Fern\"uberwachung (SCADA)} f\"ur Betriebsdatenerfassung und Remote Control
 \end{enumerate}
 
-
-\end{multicols}
-
 \section{Editorial}
 Created by Christian Molli\`ere.\\
 Last updated \today.\\
 Feel free to share and edit!
+
+\end{multicols}
+
+
 
 \end{document}
