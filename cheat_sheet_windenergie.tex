@@ -50,7 +50,7 @@
 
 \section{Statistik}
 \subsection{Basics}
-Mittelwert $\bar{x}=\frac{1}{n}\sum^n_{i=1}x_i$\\
+Mittelwert $\bar{x}=\sum^n_{i=1}x_i$\\
 Varianz $\sigma^2 = \sum^n_{i=1}(x_i-\bar{x})^2$\\
 \vspace{6pt}
 Kovarianz \\
@@ -224,6 +224,12 @@ $c_{P,\text{max,real}} = c_{P,\text{real}} \cdot \eta_{\text{Profil}} \cdot \eta
 Moment an der Gondel $M=F\cdot L\cdot\text{sin}(\Omega\cdot t)$\\
 $\rightarrow$ Periodische Anregung der Gondel durch $\Omega$\\
 Periodisches Gondelmoment bei Ein- und Zweiblattrotoren. Bei Drei- und Vierblattrotoren l\"oscht sich die Periodizit\"at aus, sodass ein konstantes Gondelmoment vorliegt, solange konstante Windverh\"altnisse vorliegen.
+\subsection{Systeme von Feder-D\"ampfer Schwingern}
+Bewegungsgleichungssystem $\textbf{M}\ddot{q} + \textbf{B} \dot{q} + \textbf{K} = \textbf{f}$\\
+\vspace{3pt}
+Eigenwerte bestimmen durch $\text{det}(\lambda^2\textbf{M}-\textbf{K})$\\
+\vspace{3pt}
+Schwingungsmoden aus Eigenvektoren von $\lambda^2\textbf{M}-\textbf{K}$
 
 \subsection{Rotational Sampling}
 Jede B\"oe wird mehrmals durch die Rotorbl\"atter durchschnitten. Aus Sicht des Blattes wird die Belastung durch die B\"oe so wiederholt abgetastet. Die Anregung der B\"oe wird somit mit der Rotationsfrequenz des Blattes \"uberlagert.
